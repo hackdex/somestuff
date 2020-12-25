@@ -25,7 +25,6 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          chmod +x "${GITHUB_WORKSPACE}/run.sh"
-          git diff-tree --no-commit-id --name-only -r ${{ github.event.after }}
-          echo "CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r ${{ github.event.after }})" >> $GITHUB_ENV
-          "${GITHUB_WORKSPACE}/run.sh"
+          for changed_file in ${{ steps.files.outputs.all }}; do
+            echo $changed_file;
+          done
