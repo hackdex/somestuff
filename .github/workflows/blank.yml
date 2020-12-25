@@ -26,5 +26,5 @@ jobs:
       - name: Run a multi-line script
         run: |
           chmod +x "${GITHUB_WORKSPACE}/run.sh"
-          echo "CHANGED_FILES=$(git diff --name-only ${{ github.event.before }}..${{ github.event.after }})" >> $GITHUB_ENV
+          echo "CHANGED_FILES=$(git diff --name-only ${{ github.event.after }})" >> $GITHUB_ENV
           "${GITHUB_WORKSPACE}/run.sh"
