@@ -29,7 +29,6 @@ jobs:
         run: |
           for changed_file in ${{ steps.files.outputs.all }}; do
             if [[ "$changed_file" =~ ^div1\/.*json$ ]]; then
-                curl -X POST 'http://164.90.148.125/indexes/movies/d
-ocuments' --data @$changed_file;
+                curl -X POST 'http://164.90.148.125/indexes/movies/documents' --data @$changed_file;
             fi
           done
