@@ -29,6 +29,7 @@ jobs:
         run: |
           for changed_file in ${{ steps.files.outputs.all }}; do
             if [[ "$changed_file" =~ ^div1\/.*json$ ]]; then
+                echo "Updating $changed_file";
                 curl -X POST -H "X-Meili-API-Key: ${{ secrets.MASTER_KEY }}" 'http://164.90.148.125/indexes/movies/documents' --data @$changed_file;
             fi
           done
