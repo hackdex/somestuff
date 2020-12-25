@@ -28,5 +28,8 @@ jobs:
       - name: Run a multi-line script
         run: |
           for changed_file in ${{ steps.files.outputs.all }}; do
-            echo $changed_file;
+            if [[ "$changed_file" =~ ^div1\/.*json$ ]]; then
+                curl -X POST 'http://164.90.148.125/indexes/movies/d
+ocuments' --data @$changed_file;
+            fi
           done
