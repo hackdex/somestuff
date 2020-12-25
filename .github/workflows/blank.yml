@@ -26,5 +26,6 @@ jobs:
       - name: Run a multi-line script
         run: |
           chmod +x "${GITHUB_WORKSPACE}/run.sh"
+          echo $(git diff-tree --no-commit-id --name-only -r ${{ github.event.after }})
           echo "CHANGED_FILES=$(git diff-tree --no-commit-id --name-only -r ${{ github.event.after }})" >> $GITHUB_ENV
           "${GITHUB_WORKSPACE}/run.sh"
